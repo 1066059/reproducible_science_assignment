@@ -2,8 +2,8 @@
 
 Reproducible science assignment R code.
 
-Data pipeline for question 2 can be found in reproducible_research_assignment.Rmd.
+Data pipeline for question 2 can be found in reproducible_science_code.Rmd.
 
-Data folder contains raw/clean data.
+Data folder contains raw/clean data used in analyses.
 
-Figure folder contains exploratory and results figure. 
+Figure folder contains exploratory and results figure from the data pipeline. 
