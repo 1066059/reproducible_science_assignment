@@ -1,6 +1,6 @@
 # reproducible_science_assignment
 
-Reproducible science assignment R code./
+Reproducible science assignment R code.
 
 Data pipeline for question 2 can be found in reproducible_research_assignment.Rmd.
 
