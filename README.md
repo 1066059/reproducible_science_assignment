@@ -2,7 +2,7 @@
 
 Reproducible science assignment R code.
 
-Data pipeline for question 2 can be found in reproducible_science_code.Rmd.
+Data pipeline for question 2 can be found in q2_code.Rmd.
 
 Data folder contains raw/clean data used in analyses.
 
