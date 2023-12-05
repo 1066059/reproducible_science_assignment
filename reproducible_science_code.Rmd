@@ -157,8 +157,9 @@ plot_explore <- function(penguins_clean){
 
 exploratory_plot <- plot_explore(penguins_clean)
 exploratory_plot
+```
 
-
+```{r, include=FALSE}
 #function for saving vector image 
 save_explore_plot_svg <- function(penguins_clean, 
                                   filename, size, scaling){
@@ -214,6 +215,7 @@ All three species show significant p-values for these coefficients, suggesting t
 Additionally, the coefficients vary between species, suggesting there may be species-specific effects between body mass and flipper length correlation. 
 To elaborate, in Adelie penguins, the linear regression coefficient (32.689) was shown to be significant (p-value < 3.4e-09). In chinstrap penguins, the linear regression coefficient was 34.573  and also shown to be statistically significant with a p-value of 3.75e-09. Finally, the gentoo penguins showed the strongest correlation between body mass and flipper length with a linear regression coefficient of 54.165 and a p-value of < 2e-16. 
 
+#### Results Figure
 ```{r Plotting Results, warning=FALSE, message=FALSE}
 #creating function for plotting 
 plot_explanatory <- function(penguins_clean){
@@ -235,7 +237,9 @@ geom_point() +
 #plotting explanatory figure
 explanatory_plot <- plot_explanatory(penguins_clean)
 explanatory_plot
+```
 
+```{r, include=FALSE}
 #saving figure as a vector image so it can be scaled 
 save_explanatory_plot_svg <- function(penguins_clean, 
                                       filename, size, scaling){
@@ -262,8 +266,51 @@ In conclusion, the results support the hypothesis that there is a positive corre
 ------------------------------------------------------------------------
 
 
+## QUESTION 3: Open Science
+
+### a) GitHub
+
+*GitHub link:*
+https://github.com/1066059/reproducible_science_assignment
 
 
+### b) Share your repo with a partner, download, and try to run their data pipeline.
+
+*Partner's GitHub link:*
+https://github.com/wings029/Reproducible-science-and-figures-assignment
+
+
+### c) Reflect on your experience running their code. (300-500 words)
+
+**What elements of your partner's code helped you to understand their data pipeline?**
+
+My partner described what they were going to do and why they were doing it before each chunk of code and also used hashtags to make comments within chunks which made it very easy to understand. The text before chunks allowed the general idea to be seen and the comments in the chunk allowed each individual action to be understood. Also the use of piping kept the code logical and neat and enhanced the reproducibility as it prevents mistakes.
+
+**Did it run? Did you need to fix anything?**
+
+Everything ran smoothly, there was no need to fix anything.
+
+**What suggestions would you make for improving their code to make it more understandable or reproducible, and why?**
+
+I suggested to keep separate subfolders for functions/figures so that they can be shared and easily applied to other data analyses.This also prevents the need for repetitive code writing which may lead to mistakes and therefore hinder reproducibility. I also suggested to save the figures as vector images rather than .png. I thought this would be useful as they can be scaled for different uses and are therefore more reproducible in print. Additionally, the final results figure involves adding the statistics as annotations/labels on the graph. To make this more reproducible, I would suggest using a function to automatically add the statistics rather than adding them in manually. This wasn't an issue as the code ran well but if I had had problems with the chunks coding the statistics section then this may have been a problem.
+
+**If you needed to alter your partner's figure using their code, do you think that would be easy or difficult, and why?**
+
+I did not need to alter their figure but I think it would be easy to do so if needed because the steps leading to the production of the figure were clear and logical and described well. However, it may have been a little bit difficult due to the above mentioned labelling issue with the statistics rather than using a function to do this. As already mentioned, if I hadn't run the chunk containing the statistics, the labels/annotations on the graph wouldn't make any sense.
+
+
+### d) Reflect on your own code based on your experience with your partner's code and their review of yours. (300-500 words)
+
+**What improvements did they suggest, and do you agree?**
+
+My partner made three suggestions to improve on. Firstly, to show the original raw dataset before cleaning in order to allow those who are unfamiliar with it to gain an understanding of what the raw data looks like. I think this is a good suggestion for the future as not everyone has come across this dataset before and it would be useful to orient oneself with the variables the dataset contains before doing any analysis. For this exercise, I assumed people had previous knowledge of the raw dataset and didn't feel the need to include it at the beginning for reference but I agree that it makes sense to include it.
+The second piece of advice was to get R to copy and store the functions I made rather than manually doing it. This is a good idea but providing this information in the code allows others to see the thought process and perform it for themselves and therefore helps reproducibility. 
+Finally, my partner suggested to keep a record of the versions of the packages used in my analyses. This is a good suggestion as the packages may be outdated or others may have different versions which may hinder them from running the code.
+
+
+**What did you learn about writing code for other people?**
+
+I learnt that is a very useful skill to have because it not only helps others to understand the code, but also myself. There have been times when I have returned to a project and cannot remember why I took the steps I did. Writing code for other people has helped me to lay out my analyses more clearly.I also learnt the importance of breaking down my code into manageable chunks with their own specific functionality. This allows other to easily understand what and why an action is being performed and also helps with error handling. 
 
 
 
