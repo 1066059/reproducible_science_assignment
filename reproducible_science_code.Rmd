@@ -11,19 +11,19 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Installing / loading packages
+#### Installing / loading packages
 ```{r, echo=TRUE, results='hide'}
-install.packages(c("palmerpenguins","ggplot2", "janitor", "dplyr","ragg", "svglite"))
+install.packages(c("palmerpenguins","ggplot2", "janitor", "dplyr","ragg", "svglite", "tinytex"))
 ```
 
 ```{r, message=FALSE, warning=FALSE}
-library(ragg)
-library(svglite)
-library(tinytex)
 library(palmerpenguins)
 library(ggplot2)
 library(janitor)
 library(dplyr)
+library(ragg)
+library(svglite)
+library(tinytex)
 ```
 
 
@@ -34,7 +34,7 @@ library(dplyr)
 ```{r bad figure code, echo = FALSE, warning=FALSE}
 # Misleading scatter plot
 
-plot_bad_figure <- ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, color = species, shape = island)) +
+bad_figure <- ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, color = species, shape = island)) +
   geom_point(size = 10, alpha = 0.7) +
   labs(title = "Penguin Body Mass vs. Flipper Length",
        x = "body_mass_g",
@@ -48,7 +48,8 @@ plot_bad_figure <- ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, 
         axis.title = element_text(size = 12, face = "italic", color = "purple"),
         legend.text = element_text(size = 8, face = "bold", color = "blue"))
 
-print(plot_bad_figure)
+print(bad_figure)
+
 
 ```
 
@@ -181,10 +182,10 @@ save_explore_plot_svg(penguins_clean,
 
 ### Hypothesis
 The exploratory plot shows that there is a positive correlation between body mass and flipper length. That is to say that as body mass increases, so does flipper length. The plot also shows that species cluster together which may suggesting that there may be a correlation between body mass and flipper length within species.
-To look at this, I have separated the species into their own plots so that the effects of species can be seen individually. 
+To look at this, I will separate the species into their own plots so that the correlation between body mass and flipper length can be seen in each species individually.  
 
 ### Statistical Methods
-SUbsetting into different species and then performing a linear regression for each will help to identify the statistical significance betweenbody mass and flipper length correlation in the different penguin species. 
+SUbsetting into different species and then performing a linear regression for each will help to identify the statistical significance between body mass and flipper length correlation in the different penguin species. 
 
 ```{r Statistics}
 
@@ -215,6 +216,8 @@ All three species show significant p-values for these coefficients, suggesting t
 Additionally, the coefficients vary between species, suggesting there may be species-specific effects between body mass and flipper length correlation. 
 To elaborate, in Adelie penguins, the linear regression coefficient (32.689) was shown to be significant (p-value < 3.4e-09). In chinstrap penguins, the linear regression coefficient was 34.573  and also shown to be statistically significant with a p-value of 3.75e-09. Finally, the gentoo penguins showed the strongest correlation between body mass and flipper length with a linear regression coefficient of 54.165 and a p-value of < 2e-16. 
 
+The statistics and figure supports my hypothesis that body mass and flipper length are positively correlated and that the strength of the correlation varies between species. Next time, to improve, I would conduct a statistical test to determine whether these differences between species were statistically significant or not.
+
 #### Results Figure
 ```{r Plotting Results, warning=FALSE, message=FALSE}
 #creating function for plotting 
@@ -224,7 +227,7 @@ plot_explanatory <- function(penguins_clean){
 geom_point() +
   facet_wrap(~species)+
     geom_smooth(method = "lm", se = FALSE, color = "black")+
-    stat_cor(method = "pearson", size = 2) +
+    stat_cor(method = "pearson", size = 2.5) +
   labs(title = "Penguin Body Mass vs. Flipper Length Across Species",
        x = "Body Mass (g)",
        y = "Flipper Length (mm)")+
